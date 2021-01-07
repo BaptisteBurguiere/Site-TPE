@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>TPE - Flottabilité</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="CSS/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
+	<link rel="apple-touch-icon" sizes="57x57" href="images/goutte_icone/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="images/goutte_icone/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/goutte_icone/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/goutte_icone/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/goutte_icone/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="images/goutte_icone/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="images/goutte_icone/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="images/goutte_icone/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/goutte_icone/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="images/goutte_icone/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/goutte_icone/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="images/goutte_icone/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/goutte_icone/favicon-16x16.png">
+	<link rel="manifest" href="images/goutte_icone/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<style type="text/css">
+
+	/* 
+
+	couleurs :
+
+		bleu : #0275d8
+		vert : #5cb85c
+		gris : grey
+		gris clair : #F0F2F2
+	*/	
+		
+	.titre {
+		color: #0275d8;
+		font-size: 35px;
+		line-height: 150px;
+		display: inline-block;
+		text-decoration: underline;
+		text-decoration-color: grey;
+
+
+	}
+
+	.sous_titre {
+		color: #5cb85c;
+		font-size: 25px;
+		line-height: 150px;
+		display: inline-block;
+		text-decoration: underline;
+		text-decoration-color: grey;
+	}
+
+	.sous_sous_titre {
+		color: skyblue;
+		font-size: 20px;
+		text-decoration: underline;
+		text-decoration-color: grey;
+	}
+
+	.dropbtn {	
+	    background-color: skyblue;
+	    color: white;
+	    padding: 16px;
+	    font-size: 16px;
+	    border: none;
+	    cursor: pointer;
+	    transition-duration: 200ms;
+	}
+
+	.dropdown {
+	    position: relative;
+	    display: inline-block;
+	}
+
+	.dropdown-content {
+	    display: none;
+	    position: absolute;
+	    background-color: #5cb85c;
+	    min-width: 160px;
+	    z-index: 1;
+	    transition-duration: 200ms;
+	}
+
+	.dropdown-content a {
+	    color: white;
+	    padding: 12px 16px;
+	    text-decoration: none;
+	    display: block;
+	    transition-duration: 200ms;
+	}
+
+	.dropdown-content a:hover {
+		background-color: white;
+		color: #5cb85c
+		
+
+	}
+
+	.dropdown:hover .dropdown-content {
+	    display: block;
+	}
+
+	.dropdown:hover .dropbtn {
+	    background-color: white;
+	    color: skyblue;
+	}
+
+	#btn-top {
+		color: white;
+		position: relative;
+		padding: 12px;
+		float: right;
+		transition-duration: 200ms;
+	}
+
+	#btn-top:hover {
+		color: skyblue;
+		position: relative;
+		padding: 12px;
+		background-color: white;
+		float: right;
+	}
+
+	p {
+		font-size: 18px;
+	}
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.js-scrollTo').on('click', function() { // Au clic sur un élément
+				var page = $(this).attr('href'); // Page cible
+				var speed = 750; // Durée de l'animation (en ms)
+				$('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+				return false;
+			});
+		});   
+
+	</script>
+
+</head>
+<body> 
+			
+	<!-- header -->
+
+	<header class="container-fuid" style="margin: 0; float: left; background-color: skyblue; width: 100%; max-width: 100%;	height: 50px; padding-left: 10px;" id="top">
+
+		<div class="conainer">
+			<p style="float: left; margin: 0; padding-top: 10px; font-size: 20px; width: 60%; letter-spacing: 1px; ">TPE - Flottabilité</p>
+
+			<a class="btn btn-outline-primary" href="sources.html" target="_blank" role="button" style="float: left; text-align: right; font-size: 15px; margin-top: 7px; margin-right: 5%; margin-left: 15%;">Sources</a>
+
+			<a class="btn btn-outline-primary js-scrollTo" href="#contact" role="button" style="float: left; text-align: right; font-size: 15px; margin-top: 7px;">Contact</a>
+
+		</div>
+		
+	</header>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- bannière -->
+
+	<img src="images/fond écran eau.jpg" style="width: 100%; max-width: 100%; filter: blur(10px); position: sticky; top: 0;">
+	<section class="container-fuid">
+		<div style="text-align: center; position: absolute; top: 37%; width: 100%; text-align: center;">
+			<h1 style="color: black; font-size: 50px; font-weight: lighter; text-shadow: 2px 2px 2px grey;">Bienvenue sur notre site !</h1>
+			<a class="btn btn-success js-scrollTo" href="#content" role="button">Accéder au contenu</a>
+		</div>
+
+
+
+	</section>
+
+	<br><br>
+
+	<!-- navbar -->
+
+	<div style="position: sticky; height: 56px; width: 100%; background-color: skyblue; top: 0; margin: 0; padding: 0; z-index: 100;">
+
+		<div class="dropdown">
+			<button class="dropbtn">Introduction</button>
+			<div class="dropdown-content">
+				<a class="js-scrollTo" href="#intro">Aller</a>
+				<div class="dropdown-divider"></div>
+				<a class="js-scrollTo" href="#problématique">Problématique</a>
+			</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">La coque</button>
+			<div class="dropdown-content">
+				<a class="js-scrollTo" href="#coque">Aller</a>
+				<div class="dropdown-divider"></div>
+				<a class="js-scrollTo" href="#hydro">L'hydrodynamisme</a>
+				<a class="js-scrollTo" href="#forme_coque">Les différentes formes de coque</a>
+				<a class="js-scrollTo" href="#carène">La carène</a>
+				<a class="js-scrollTo" href="#foil">Le foil</a>
+				<a class="js-scrollTo" href="#dérive">La dérive</a>
+			</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">Les gréements</button>
+			<div class="dropdown-content">
+				<a class="js-scrollTo" href="#gréements">Aller</a>
+				<div class="dropdown-divider"></div>
+				<a class="js-scrollTo" href="#allures">Les différentes allures</a>
+				<a class="js-scrollTo" href="#type_gréements">Les différents types de gréements</a>
+
+			</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">Les matériaux</button>
+			<div class="dropdown-content">
+				<a href="#matériaux" class="js-scrollTo">Aller</a>
+				<div class="dropdown-divider"></div>
+				<a href="#matériauxPrincipaux" class="js-scrollTo">Les matériaux principaux</a>
+				<a href="#matériauxCourse" class="js-scrollTo">Les coques des bateaux de courses</a>
+				<a href="#requin" class="js-scrollTo">La peau du requin</a>
+			</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">Conclusion</button>
+			<div class="dropdown-content">
+				<a href="#conclusion" class="js-scrollTo">Aller</a>
+			</div>
+		</div>
+		
+		<a class="js-scrollTo" href="#top" id="btn-top"><i class="fa fa-chevron-up fa-2x"></i> </a>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- contenu -->
+
+	<div class="container" style="text-align: justify; background-color: #F0F2F2; border-radius: 15px; border: 1px solid grey; margin-top: 50px;" id="content">
+
+		<span class="titre" id="intro">Introduction</span>
+
+		<br><br>
+
+		<p>
+			Avec les avancées technologiques de nos jours, les performances des bateaux ne cessent de progresser. Elles sont optimisées en fonction de plusieurs facteurs. Il nous a semblé intéressant de se pencher sur ce sujet et de comprendre l'évolution des différentes techniques. Pour répondre à nos interrogations, nous avons donc posé la problématique suivante :
+		</p>
+		
+		<span class="sous_titre" id="problématique">Problématique :</span>
+
+		<p style="letter-spacing: 1px;">
+			<strong>Comment améliorer et optimiser les performances d'un bateau ?</strong>
+		</p>
+
+		<br><br>
+
+		<p>
+			Pour répondre à cette question, nous avons construit un plan autour des principaux composants du bateau notament ceux de la coque, des gréements et des matériaux.
+		</p>
+
+		<br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<span class="titre" id="coque">La coque</span><br>
+
+		<p>
+			La coque est une, si ce n'est la partie la plus importante du bateau. Elle assure la flottabilité ainsi que l'étanchéité de l'embarcation. Sa forme et ses composants peuvent complètement changer les performances de celle ci. Nous allons donc voir ici les différents composants de la coque, leur utilité et les matériaux possible pour fabriquer notre coque. 
+		</p>
+
+
+
+		<div style="text-align: center;">
+			<img style="border: 1px solid grey; border-radius: 20px;" src="images/coque schéma.jpg">
+		</div>
+
+		<br><br>
+
+
+
+
+
+
+
+
+
+
+
+		<span class="sous_titre" id="hydro">L'hydrodynamisme</span> <br>
+
+		<p>
+			L'hydrodynamisme est la science qui étudie les frottements d'un corps dans l'eau. Ici étudier l'hydrodynamique navale nous permettrait de déterminer la forme de la coque, ou encore la carène la plus performante et ainsi répondre au mieux à notre problématique.
+		</p>
+
+		<br><br>
+
+		<div style="text-align: center;">
+			<img style="width: 50%; border: 1px solid grey; border-radius: 20px;" src="images/hydro.jpg">
+		</div>	
+
+		<br><br>
+
+		<p>
+			Sur le schéma ci-dessus, nous observons le chemin parcouru par l'eau pour "éviter" l'obstacle. Le premier est de forme cubique avec les bords arrondis. Le schéma nous montre qu'une grande partie de l'eau se heurte à la surface plane de l'objet, ce qui le ralenti considérablement comme l'indique la flèche rouge. L'autre objet est de forme ovale et facilite l'écoulement du fluide. <br>
+			Nous pouvons en déduire que les frottements entre l'eau et l'objet sont plus importants lorsque l'eau se heurte avec une face plane qu'avec une forme arrondie. <br>
+			Les coques les plus performantes sont donc celles qui facilitent le plus l'écoulement de l'eau.
+		</p>
+
+		<br><br>
+
+
+
+
+
+
+
+
+
+		<span class="sous_titre" id="forme_coque">Les différentes formes de coque</span><br>
+
+		<table class="table table-bordered" style="background-color: white; border-radius: 20px;">
+			<tbody style="text-align: left;">
+
+				<tr>
+					<td><strong>Formes de coque</strong></td>
+					<td><strong>Avantages</strong></td>
+					<td><strong>Inconvénients</strong></td>
+					<td><strong>Utilisations</strong></td>
+				</tr>
+
+				<tr>
+					<td>Coque à fond plat</td>
+					<td>- Idéale pour naviguer en eau calme, sur des lacs ou étangs</td>
+					<td>- Inutilisable en eau agitées<br>
+					- stabilité</td>
+					<td>Petits bateaux comme des barques pouvant atteindre rapidement de "grandes" vitesses.</td>
+				</tr>
+
+				<tr>
+					<td>Coque en V (plat)</td>
+					<td>- Bonne stabilité à l'arrêt dans un port (au mouillage) <br>
+					- nécessite moins de puissance pour déjauger</td>
+					<td>- tape dans les vagues</td>
+					<td>Se trouve sur des bateaux de plaisance</td>
+				</tr>
+
+
+				<tr>
+					<td>Coque en V (constant)</td>
+					<td>- navigue convenablement</td>
+					<td>- nécessite plus de puissance pour déjauger</td>
+					<td>Se trouve sur des bateaux de plaisance</td>
+				</tr>
+
+				<tr>
+					<td>Coque en V (progressif)</td>
+					<td>- meilleures performances</td>
+					<td>- moins stable par temps agité</td>
+					<td>Se trouve sur des bateaux de plaisance</td>
+				</tr>
+
+				<tr>
+					<td>Coque ronde</td>
+					<td>- efficace <br>
+					- perment de glisser sur l'eau</td>
+					<td>- vitesse très lente <br>
+					- très peu de stabilité <br>
+					- ne peut pas déjauger</td>
+					<td>Se trouve sur les bateaux fluviaux comme des barques.</td>
+				</tr>
+
+
+			</tbody>
+		</table>
+
+
+
+
+
+
+
+		<span class="sous_titre" id="carène">La carène</span>
+
+		<p>
+			La carène est la partie immergée de la coque d'un bateau. Autrement dit, c'est l'ensemble des parties du flotteur qui seront à un moment donné en contact avec l'eau. <br>
+			Nous allons donc voir dans cette partie les différents types de carène, leur avantages et inconvénients.
+		</p>
+
+
+
+		<br><br>
+
+
+
+		<span class="sous_sous_titre">Carène à déplacement</span> <br><br>
+
+		<p style="width: 60%;">
+			La carène à déplacement est basée sur le principe d'Archimède : elle ne déjauge pas et doit alors pousser l'eau pour avancer. Un bateau qui déjauge signifie qu'il s'élève sur l'eau sous l'effet de la vitesse. Cette forme est donc faite pour naviguer dans le confort du fait de sa stabilité. En revanche, elle ne serait pas du tout adaptée pour la vitesse. Cette carène permet de naviguer sur tous les océans, toutes les mers, même par un temps peu favorable. En effet, sa forme lui donne la capacité de ne pas taper dans les vagues. Sa stabilité est due notamment à un fond de coque en V et une quille longue.
+			<br><br>
+			Comme dit précedemment, la carène à déplacement ne dejauge pas. Cette propriété empèche le bateau d'atteindre de grandes vitesses et la limite à la vitesse de carène, même avec une motorisation plus importante. Plus le bateau est grand, plus la vitesse maximale sera élevée.
+		</p>
+
+		<img style="width: 35%; float: right; margin-left: 2%; position: absolute; top: 3100px; left: 60%; border: 1px solid grey; border-radius: 20px;" src="images/carène dépla.jpg">
+
+		<br><br>
+
+
+
+		<span class="sous_sous_titre">Carène planante</span> <br><br>
+
+		<p style="width: 60%;">
+			La carène planante est une carène faite pour déjauger. Equipée d'une forte motorisation, elle s'élève au dessus de l'eau avec la vitesse. Une fois déjaugée, la carène planante permet d'atteindre facilement de grandes vitesses car il y a moins de frottements avec l'eau. La carène planante est donc très utile pour les embarquations telles que les bateaux de course. 
+			<br><br>
+			Cependant, le confort est un sacrifice nécessaire pour augmenter les performances. En effet, en étant déjaugée, la carène tape contre les vagues.
+		</p>
+
+		<img style="width: 35%; float: right; margin-left: 2%; position: absolute; top: 3530px; left: 60%; border: 1px solid grey; border-radius: 20px;" src="images/carène plan.jpg">
+
+
+		<br><br>
+
+
+
+
+		<span class="sous_sous_titre">Carène à semi-déplacement</span> <br><br>
+
+		<p style="width: 60%;">
+			La carène à semi-déplacement, aussi appelée carène semi-planante, a la particularité d'être un compromis entre la carène à déplacement et la carène planante. De ce fait, elle possède un V assez profond sur la partie avant qui s'adoucit progressivement vers l'arrière. Le bateau naviguera donc en position semi-déjaugée. Cette carène possède une bonne tenue de route même dans des conditions météo relativement mauvaises. <br><br>
+
+			On trouve ce type de carène sur les vedettes qui doivent concilier performance et habitabilité. <br><br>
+
+			Comme sur les carènes à déplacement, le fond de coque est équipé d'une quille longue pour améliorer la tenue du cap. Cette carène est donc une bonne alternative entre le confort de la carène à déplacement et les performances de la carène planante.
+		</p>
+
+		<img style="width: 35%; float: right; margin-left: 2%; position: absolute; top: 4000px; left: 60%; border: 1px solid grey; border-radius: 20px;" src="images/carene semi.jpg">
+
+
+		<br><br><br><br><br>
+
+
+
+
+		<span class="sous_sous_titre">Les avantages et inconvénients</span>
+
+		<br><br>
+
+		<table class="table table-bordered" style="background-color: white; border-radius: 20px;">
+			<tbody style="text-align: left;">
+
+				<tr>
+					<td><strong>Carènes</strong></td>
+					<td><strong>Avantages</strong></td>
+					<td><strong>Inconvénients</strong></td>
+				</tr>
+
+				<tr>
+					<td>Carène à déplacement</td>
+					<td>- confort <br>
+					- autonomie <br>
+					- nécessite une faible puissance de moteur</td>
+					<td>- vitesse limitée <br>
+					- roulis</td>
+				</tr>
+
+				<tr>
+					<td>Carène planante</td>
+					<td>- peut atteindre de hautes vitesses <br>
+					- peu de trainée donc consomme moins</td>
+					<td>- non confortable <br>
+					- nécessite une motorisation performante</td>
+				</tr>
+
+				<tr>
+					<td>Carène semi-planante</td>
+					<td>- bonnes performances sans trop de puissance <br>
+					- confort <br>
+					- peut naviguer sur une mer peu agitée</td>
+					<td>- moins rapide qu'une carène planante <br>
+					- sensible au poids</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+
+
+
+
+
+
+
+
+		<span style="width: 100%;" class="sous_titre" id="foil">Le foil</span>
+
+		<p style="width: 60%;">
+			Le foil est une aile qui permet à un bateau de se déplacer en étant surélevé par rapport à la surface de l'eau. Il favorise l'atteinte d'une grande vitesse de déplacement en minimisant la puissance nécessaire. 
+			<br><br>
+			Le foil permet d'éviter les frottements de l'eau sur la coque en faisant planer l'embarquation au dessus de l'eau. Cela présente les avantages suivants : <br>
+			- moins de puissances à fournir <br>
+			- économie de carburant <br>
+			- moins de nuisances sonores
+			<br><br>
+			Equipés de foils, les voiliers peuvent atteindre des vitesses supérieures à celle du vent ! 
+			En revanche, les foils sont des dispositifs moins efficaces et plus complexes à mettre en oeuvre lorsque l'embarcation excède quelques tonnes.
+		</p>
+
+		<img style="width: 35%; float: right; margin-left: 2%; position: absolute; top: 4930px; left: 60%; border: 1px solid grey; border-radius: 20px;" src="images/foil.jpg">
+
+		<br><br><br><br>
+
+		<div style="text-align: center;">
+
+			<img style="border: 1px solid grey; border-radius: 20px; width: 60%;" src="images/foil aile.png">
+
+		</div>	
+
+		<br><br><br><br>
+
+		<div style="text-align: center;">
+			<iframe width="840" height="472.5" src="https://www.youtube.com/embed/TyPbl7FFqxU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+		</div>	
+
+		<div style="text-align: center;">
+				<span>Vidéo de la chaine YouTube Safran Sailing Team qui nous explique le rôle du foil sur les bateaux du Vendée Globe</span>
+		</div>
+
+		<br><br>
+
+
+
+
+
+
+
+
+
+
+		<span class="sous_titre" id="dérive">La dérive</span> <br>
+
+		<br>
+
+		<div style=" text-align: center;">
+      		<img src="images/forces.png" style="border: 1px solid grey; border-radius: 20px; width: 40%;">
+    	</div>
+
+    	<br><br>
+
+		<p>
+			Le vent exerce une force perpendiculaire sur les voiles. S'il n'y avait pas de dérives, le bateau avancerait latéralement sous la force du vent. Le but des dérives est donc de garder l'embarcation sur sa route. Sur les bateaux de plaisance, la dérive est fixée sous la coque avec une quille placée à son extrémité. Elle permet à la fois de stabiliser le bateau et d'empêcher la dérive. <br>
+			Sur les bateaux de course, les dérives sont séparées en deux rôles distincts. On a d'un côté la quille pendulaire qui équilibre le bateau et d'un autre côté les dérives qui créent une force anti-dérive en s'opposant à la force du vent.
+		</p>
+
+		<br><br>
+
+		<img src="images/quille.png" style="border: 1px solid grey; border-radius: 20px; width: 40%;">
+
+		<img src="images/pendulaire.png" style="border: 1px solid grey; border-radius: 20px; width: 32%; float: right;"><br>
+
+		<span style=" margin-left: 12%;"> Bateau de plaisance</span>
+
+		<span style=" margin-left: 52%;"> Bateau de course</span>
+
+		<br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<span class="titre" id="gréements">Les gréements</span>
+
+		<p>
+			Un gréement est l'ensemble du matériel fixe ou mobile, qui permet la propulsion et la manoeuvre d'un bateau par la force du vent. Il comporte les manoeuvres courantes et les manoeuvres dormantes. On appelle espar, les pièces qui composent le gréement. 
+			<br><br>
+			Les gréements courants ou manoeuvres courantes sont les parties mobiles : bôme, barre de flèche, vergue, écoute, drisse, bastaque... 
+			<br><br>
+			Les gréements dormants ou manoeuvres dormantes sont les parties fixes : mât, étai, pataras, haubans, barres de flèche...
+		</p>
+
+		<br><br><br>
+
+
+
+
+
+		<div>
+
+		<img src="images/gréement.jpg" style="float: left; width: 45%; border: 1px solid grey; border-radius: 20px; margin-top: 20px;">
+
+		<span style="float: left; width: 50%; margin-left: 20px;">
+
+			<strong>Mât</strong> : long poteau dressé verticalement sur le pont d'un voilier pour supporter la voilure. <br>
+
+			<strong>Barre de flèche</strong> : espar servant à raidir le mât avec l'aide des haubans. Plus le mât est grand, plus il y aura de barres de flèche. <br>
+
+			<strong>Etai</strong> : placé à l'avant du navire, c'est un cordage servant à soutenir et à consolider le mât. <br>
+
+			<strong>Pataras</strong> : même rôle que l'étai, il est placé à l'arrière du navire. <br>
+
+			<strong>Hauban</strong> : nom des câbles et cordages qui assurent le soutien latéral des mâts d'un navire à voiles. <br>
+
+			<strong>Bastaque</strong> : hauban mobile qui permet au mât de résister à la poussée des voiles vers l'avant. <br>
+
+			<strong>Bôme</strong> : mât horizontal sur lequel sont fixées certaines voiles. <br>
+
+			<strong>Vergue</strong> : espar placé en travers du mât servant à soutenir une voile. <br>
+
+			<strong>Ecoute</strong> : cordage servant à régler l'angle d'une voile. <br>
+
+			<strong>Drisse</strong> : cordage servant à hisser et à fixer une voile. <br>
+
+			<strong>Vergue</strong> : pièce de bois placée en travers des mâts dans le but de fixer les voiles.
+
+		</span>
+
+		</div>
+
+		<span style="margin-left: 14%;">Schéma d'un gréement</span>
+
+        <br><br><br><br><br>
+
+
+
+
+
+
+        <div>
+
+        <img src="images/schéma voile.png" style="float: left; width: 45%; border: 1px solid grey; border-radius: 20px;">
+
+        <span style="float: left; width: 50%; margin-left: 20px; margin-top: 200px; padding-bottom: 240px;">
+
+        	<strong>Guidant ou bord d'attaque</strong> : partie de la voile qui fait face au vent. <br>
+
+			<strong>Chute ou bord de fuite</strong> : partie à l'arrière de la voile. <br>
+
+			<strong>Point de drisse</strong> : angle au sommet de la voile où est fixée la drisse. <br>
+
+			<strong>Point d'armure</strong> : angle attaché au point fixe du bateau. <br>
+
+			<strong>Point d'écoute</strong> : angle auquel est attaché l'écoute. <br>
+
+        </span>
+
+    	</div>
+
+    	<span style="margin-left: 14%;">Schéma d'une voile</span>
+
+    	<br><br><br><br><br>
+
+
+
+
+
+
+
+        <span class="sous_titre" id="allures">Les différentes allures</span> <br><br>
+
+        <img style="width: 40%; margin-left: 30%;" src="images/les différentes allures.png"> <br><br><br>
+
+
+        <div style="width: 60%;">
+        <span class="sous_sous_titre">Le vent arrière</span><br><br>
+
+        <p>Le vent arrive de l'arrière du bateau et rend la voile très instable. L'écoulement de l'air sur la voile est perturbé ce qui réduit la vitesse du voilier et entraîne généralement l'empannage. L'empannage est le fait que la voile passe de l'autre côté du bateau.</p>
+
+        <span class="sous_sous_titre">Le largue</span><br><br>
+
+        <p>le vent souffle à la perpendiculaire sur les voiles et l'écoulement de l'air reste encore perturbé. Cependant, la vitesse est relativement rapide.</p>
+
+        <span class="sous_sous_titre">Le travers</span><br><br>
+
+        <p>c'est l'allure la plus confortable et la plus rapide. La bateau navigue perpendiculairement au vent.</p>
+
+        <span class="sous_sous_titre">Le près</span><br><br>
+
+        <p>le bateau navigue pratiquement face au vent. Son cap est orienté à 45° par rapport à l'axe du vent. C'est l'allure que le bateau devra adopter pour remonter le vent.</p>
+
+        <span class="sous_sous_titre">Le vent de face</span><br><br>
+
+        <p>le vent arrive face au bateau. Il est impossible pour le bateau d'avancer sur cette allure. Pour remonter le vent, le bateau devra louvoyer. C'est dire qu'il devra zigzaguer pour être sur le près.</p>
+
+    	</div>
+
+    	<img style="width: 20%; float: right; margin-left: 2%; position: absolute; top: 9750px; left: 65%; border: 1px solid grey; border-radius: 20px;" src="images/louvoyer schéma.jpg">
+
+    	<br><br><br>
+
+
+
+		
+
+
+
+
+        <span class="sous_titre" id="type_gréements">Les différents types de gréements</span><br>
+
+        <span class="sous_sous_titre">Le gréement carré</span><br><br>
+
+        <p style="width: 70%;">
+			Utilisé dès l'antiquité, c'est le type de gréement le plus ancien. La voile est de forme carrée et est suspendue à une vergue horizontale. Son efficacité est maximale au vent arrière. Le gréement carré ne permet pas de louvoyer de façon efficace. Il est performant sur des vents portants et réguliers mais l'est moins sur les vents irréguliers. Aujourd'hui la voile carrée est rarement utilisée. On peut aussi déployer les bonnettes. Ce sont des petites voiles que l'on ajoute sur les côtés pour gagner en vitesse.
+		</p>
+
+		<br><br><br>
+
+		<img style="width: 20%; float: right; margin-left: 2%; position: absolute; top: 10590px; left: 70%; border: 1px solid grey; border-radius: 20px;" src="images/voile carrée.png"><br><br>
+
+
+		<img style="width: 40%; margin-left: 30%; border: 1px solid grey; border-radius: 20px;" src="images/bonnettes.gif"><br>
+
+		<span style="margin-left: 33%;">Les bonnettes sont représentées en rouge ci-dessus</span><br><br><br><br><br>
+
+
+
+
+
+
+
+
+		<span class="sous_sous_titre">Le gréement aurique</span><br><br>
+
+		<p>
+			La voile aurique est en forme de trapèze et possède quatre côtés. Elle est comprise entre trois espars : le mât à l'avant, la bôme en dessous et la corne au-dessus. La voile aurique recevra toujours le vent par le même bord d'attaque. Il existe différents types de voiles pour le gréement aurique : la voile à corne, la voile au tiers et la voile à livarde. Il faut également savoir qu'un mât est limité à une seule voile de ce type.
+		</p>
+
+		<br><br>
+
+
+		<div style="height: 750px;">
+			<div class="card" style="width: 30%; float: left; margin-left: 3%;">
+				<img  style="width: 100%;" class="card-img-top" src="images/voile corne.gif" alt="Card image cap">
+				<div class="card-body">
+					<p class="card-text" style="padding: 20px;">
+						<strong>Voile à corne :</strong><br>
+						La voile à corne est uniquement concentrée sur l'arrière du bateau laissant à l'avant, la place pour une autre voile dans le but d'augmenter les performances du bateau comme la vitesse. La voile à corne est plus efficace au largue et tourne toute seule en fonction du vent.
+					</p>
+				</div>
+			</div>
+
+			<div class="card" style="width: 30%; float: left; margin-left: 3%; height: 700px;">
+				<img  style="width: 100%;" class="card-img-top" src="images/voile au tiers.gif" alt="Card image cap">
+				<div class="card-body">
+					<p class="card-text" style="padding:20px; margin-top: 80px;">
+						<strong>Voile au tiers :</strong><br>
+						Par rapport au mât, la vergue de cette voile est placée au tiers de sa longueur. L'efficacité de la voile au tiers n'est pas maximale sur une allure en particulier mais a pour avantage d'être polyvalente.
+					</p>
+				</div>
+			</div>
+
+			<div class="card" style="width: 30%; float: left; margin-left: 3%; height: 700px;">
+				<img  style="width: 100%;" class="card-img-top" src="images/voile livarde.gif" alt="Card image cap">
+				<div class="card-body">
+					<p class="card-text" style="padding: 20px; margin-top: 80px;">
+						<strong>Voile à livarde :</strong><br>
+						La voile à livarde est assez similaire aux voiles à corne et aux voiles au tiers. Cette voile est caractérisée par un espar nommé "livarde" qui tend et traverse la voile en diagonale.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<br><br><br>
+
+
+
+
+
+
+
+		<span class="sous_sous_titre">Le gréement latin</span><br><br>
+
+		<p>
+			C'est une voile triangulaire qui est enverguée sur une vergue appelée "antenne". Cette voile permet au bateau de se déplacer sur l'ensemble des allures navigables à voile. Elle est principalement utilisée en méditerranée où les vents sont irréguliers.
+		</p>
+
+		<br><br><br>
+
+		<img src="images/Voile latine.jpg" style="width: 40%; border: 1px solid grey; border-radius: 20px; margin-left: 14%">
+
+		<img src="images/schéma latin.png" style="width: 24%; border: 1px solid grey; border-radius: 20px; margin-left: 5%;"><br>
+
+		<span style="margin-left: 30%;">Voile latine</span>
+
+		<span style="margin-left: 23%;">En rouge est représentée l'antenne</span>
+
+		<br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+		<span style="" class="sous_sous_titre">Le gréement bermudien</span><br><br>
+
+		<p> 
+			On donne aussi au gréement bermudien le surnom de gréement "Marconi" en raison de sa ressemblance avec les mâts de radio inventés par Guglielmo Marconi (physicien et inventeur italien). <br>
+			Voici ci-dessous le yacht à vapeur du physicien Marconi nommé "elettra". On aperçoit sur le pont les antennes radio qui pourraient être des mâts.
+		</p>
+
+		<br>
+
+		<img style="width: 50%; margin-left: 25%; border: 1px solid grey; border-radius: 20px;" src="images/yatch elletra.jpg"><br><br><br><br>
+
+		<p>
+			Ce gréement est originaire des bermudes et est caractérisé par des voiles triangulaires fixées sur des mâts assez hauts. Le point le plus haut de la voile est attaché en tête de mât. Elle est facile d'utilisation. En effet, il suffit d'une seule drisse pour hisser la voile. Elle est polyvalente et présente de bonnes performances au vent de près, c'est pour cela que la voile bermudienne a remplacé le gréement aurique.
+		</p>
+
+		<br><br>
+
+		<img src="images/voile bermudienne.jpg" style="width: 20%; margin-left: 40%; border: 1px solid grey; border-radius: 20px;"> <br>
+
+		<span style="margin-left: 44%;">Voile bermudienne</span><br>
+
+		<br><br><br>
+
+
+
+
+
+
+
+
+		<span class="sous_sous_titre">Le foc</span> <br><br>
+
+		<p>
+			Le foc est une voile triangulaire qui est hissée le long de l'étai. Ce type de voile est très efficace au près et permet au navire d'augmenter la surface de la voilure. Par conséquent, les capacités du bateau en termes de vitesse seront augmentées. Il existe différents types de focs tels que le génois, le foc, le spinnaker, la trinquette ou encore le tourmentin. Le tourmentin est un foc réalisé en tissu très épais pour résister aux tempêtes.
+		</p>
+
+		<br><br>
+
+		<img src="images/spinnaker.jpg" style=" width: 25%; border: 1px solid grey; border-radius: 20px; margin-left: 15%">
+
+		<img src="images/tourmentin.jpg" style="width: 22%; border: 1px solid grey; border-radius: 20px; margin-left: 18%;"> <br>
+
+		<span style="margin-left: 24%;">Spinnaker</span>
+
+		<span style="margin-left: 35%;">Tourmentin</span><br>
+
+		<br><br><br><br>
+
+
+
+
+
+
+
+
+
+		<span class="sous_sous_titre">Les voiles d'un voilier du vendée globe</span><br><br>
+
+		<p>
+			Pour l'ensemble de la course, le voilier embarque une dizaine de voiles. Dans le but d'optimiser les performances du bateau, le skipper devra changer de voile en fonction de certaines conditions :<br>
+			- la force du vent <br>
+			- l'allure <br>
+			- conditions météorologiques
+		</p>
+
+		<br><br>
+
+		<img style="width: 45%; margin-left: 27.5%; border: 1px solid grey; border-radius: 20px;" src="images/voile vendée.jpg">
+
+		<br><br><br>
+
+
+		<p>
+			<strong>La grande voile</strong> : C'est la voile la plus utilisée. Normalement, elle est installée tout le long de la course car elle est très polyvalente. Elle peut en effet se régler en fonction de la force du vent. Sa superficie peut atteindre jusqu'à 250m². Elle fait partie du gréement bermudien. <br><br>
+
+			<strong>Les focs</strong> :En ce qui concerne les focs, la voile la plus utilisée est la J2. Le J signifie "génois" et le numéro indique le point de fixation (il existe aussi des voiles J1 et J3). Ce foc très polyvalent est positionné en permanence sur un étai fixe.
+			<br><br>
+			Le voilier possède également d'autres focs tels que le spinnaker, le gennaker, le solent, le tourmentin.
+		</p>
+
+		<br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<span class="titre" id="matériaux">Les matériaux</span> <br>
+
+		<p>
+			Pour qu'un bateau soit performant, il faut que les matériaux utilisés pour la coque soient légers et résistants. La voile doit également présenter une bonne élasticité pour éviter sa déformation. En effet, plus le bateau est léger, moins il s'enfoncera dans l'eau. La quantité d'eau déplacée sera alors diminuée et il y aura moins de frottements entre la coque et l'eau. La vitesse du bateau sera ainsi augmentée. Le choix des matériaux est donc primordial ! 
+		</p>
+
+		<br>
+
+		<span class="sous_titre" id="matériauxPrincipaux">Les principaux matériaux</span>
+
+		<table class="table table-bordered" style="background-color: white; border-radius: 20px;">
+			<tbody style="text-align: left;">
+
+				<tr>
+					<td><strong>Matériaux</strong></td>
+					<td><strong>Avantages</strong></td>
+					<td style=" width: 45%;"><strong>Inconvénients</strong></td>
+				</tr>
+
+				<tr>
+					<td>Le bois</td>
+					<td>-léger <br>
+					-pas d'oxydation due aux métaux</td>
+					<td style=" width: 45%;">-très peu résistant <br>
+					-difficile d'entretien </td>
+				</tr>
+
+				<tr>
+					<td>L'aluminium</td>
+					<td>-Léger par rapport à l'acier <br>
+					-bonne résistance <br>
+					-métal qui ne rouille pas <br>
+					-longévité</td>
+					<td style=" width: 45%;">-électrolyse (décomposition chimique obtenue par le passage d'un courant électrique). Il faut donc être très vigilant sur le circuit électrique du bateau. <br>
+					-coût assez élevé
+					</td>
+				</tr>
+
+				<tr>
+					<td>Le matériau composite*</td>
+					<td>-résistant <br>
+					-faible poids
+					<td>-sensible aux impacts</td>
+				</tr>
+
+				<tr>
+					<td>Fibre de carbone</td>
+					<td>-solide dans le sens des fibres <br>
+					-très léger</td>
+					<td>-coût élevé</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+		<br>
+
+		<p>
+			* Le matériau composite est un matériau qui est constitué d'au moins deux éléments. Il permet d'accumuler leurs avantages. Ce type de matériau n'est utilisé aujourd'hui que par les voiliers de compétition. Il est composé d'un renfort et d'une matrice (ou résine) qui sert de liant entre les renforts. Les matériaux principalement utilisés pour le composite sont l'epoxy, le polyester, la fibre de verre et la fibre de carbone. Il est utilisé dans le nautisme, l'automobile ou encore l'aérodynamisme.
+		</p>
+
+		<br>
+
+		<img src="images/composite.jpg" style="margin-left: 25%; width: 50%; border: 1px solid grey; border-radius: 15px;">
+
+		<br><br>
+
+		<span class="sous_titre" id="matériauxCourse">Les coques des bateaux de courses</span>
+
+		<p>
+			Même si la fibre de carbone est excessivement chère, elle équipe aujourd'hui pratiquement l'ensemble des bateaux de courses. En effet, ses caractéristiques répondent à des critères de performance élevée. Par exemple, la coque des voiliers du Vendée Globe est dite en "sandwich". Il s'agit d'une structure composée d'un "nid d'abeille" situé entre deux couches de fibre de carbone.
+		</p>
+
+		<br><br><br>
+
+		<img src="images/sandwich.png" style=" margin-left: 40%; width: 20%; border: 1px solid grey; border-radius: 15px;">
+
+		<br><br>
+
+
+
+
+
+
+
+
+		<span class="sous_titre" id="requin">La peau du requin</span>
+
+		<p style="width: 60%;">
+			Les requins sont très rapides (le requin mako peut atteindre les 100 km/h). Leurs capacités exceptionnelles s'expliquent en grande partie par les caractéristiques de leur peau. <br>
+			La peau des requins est en effet constituée d'une multitude de minuscules dents tranchantes (de l'ordre du micromètre), appelées "denticules cutanées". Ces dents miniaturisées dont l'aspect varie en fonction des espèces (forme aplatie, striée ou pointue) forment une surface rugueuse. Contrairement à ce que l'on pourrait penser, cette surface rugueuse offre de meilleures caractéristiques aérodynamiques que les surfaces lisses. <br>
+			On constate en effet sur la photo ci-contre que l'eau s'introduit dans les microrainures de la peau du requin, créant ainsi des mini tourbillons maintenant l'eau au plus près du corps de l'animal. Ce phénomène appelé "effet riblet" minimise la résistance de l'eau sur la peau du requin. 
+			<br><br>
+			Certaines entreprises conçoivent des combinaisons de natation professionnelles en s'inspirant de la peau des requins. Grâce à ces combinaisons, de nombreux records mondiaux ont été battus. 
+			<br><br>
+			Ces denticules ont également inspiré la conception de coques s'appuyant sur l'effet Riblet. C'est le cas de certains bateaux de la coupe de l'America.
+		</p>
+
+		<img src="images/peau requin.jpg" style="width: 35%; float: right; margin-left: 2%; position: absolute; top: 18000px; left: 60%; border: 1px solid grey; border-radius: 20px;">
+		<img src="images/peau requin legende.jpg" style="width: 35%; float: right; margin-left: 2%; position: absolute; top: 18300px; left: 60%; border: 1px solid grey; border-radius: 20px;">
+
+		<br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<span class="titre" id="conclusion">Conclusion</span>
+
+		<p>
+			Nos recherches nous ont permis de découvrir et de mieux comprendre les caractéristiques et le fonctionnement d'un bateau. Nous avons pu identifier les principaux paramètres permettant d'en améliorer les performances : l'efficacité de la coque, des voiles, et des matériaux utilisés. <br><br>
+
+			Pour obtenir un rendement maximal, il est indispensable de limiter les frottements entre la coque et l'eau. Différentes formes de coque et de carène permettent de gagner en vitesse. <br><br>
+
+			Un foil peut également être ajouté à la coque. Très innovant, cet élément similaire à l'aile d'un avion surélève l'embarcation par rapport au niveau de l'eau, permettant ainsi une meilleure fluidité. <br><br>
+
+			Par ailleurs, la forme des voiles doit être adaptée aux conditions météorologiques et à l'allure du bateau. Il existe pour cela différents types de voile. Certaines sont plus efficaces en termes de vitesse et de polyvalence (plus d'allures navigables). <br><br>
+
+			Pour finir, le choix des matériaux est également essentiel pour obtenir la coque la plus légère et résistante possible. Le matériau qui répond le mieux aujourd'hui à ces critères et qui semble le plus adapté aux bateaux de compétition est la fibre de carbone. <br><br>
+
+			L'ensemble de ces éléments contribuent à la réalisation d'embarcations de plus en plus performantes. On constate d'ailleurs chaque année que les records de vitesse s'améliorent grâce à la technologie et aux innovations. <br><br>
+		</p>
+
+	</div>
+
+
+	<br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- contact -->
+
+	<div class="container-fuid" style="border-top: 1px solid grey; padding: 10px; text-align: justify; float: left; width: 100%;" id="contact">
+
+		<br><br>
+
+		<p>Ce site a été créé sans éditeur de sites (comme wix par exemple) dans le cadre d'un TPE de première S. Il comporte donc de nombreuses imperfections que ce soit tant au niveau du contenu que dans la structure. Si vous avez des remarques ou critiques pour notre premier site qui nous seront utiles contactez nous !</p>
+
+		
+
+		<div class="container" style="float: left;">
+			<div class="row">
+		      <div class="col-md-6 col-md-offset-3">
+		        <div class="well well-sm">
+		          <form class="form-horizontal" method="post">
+		          <fieldset>
+		    
+		            <!-- Name input-->
+		            <div class="form-group">
+		              <label class="col-md-3 control-label" for="name">Nom</label>
+		              <div class="col-md-9">
+		                <input id="name" name="name" type="text" placeholder="Nom" class="form-control">
+		              </div>
+		            </div>
+		    
+		            <!-- Email input-->
+		            <div class="form-group">
+		              <label class="col-md-3 control-label" for="email">E-mail</label>
+		              <div class="col-md-9">
+		                <input id="email" name="email" type="text" placeholder="E-mail" class="form-control">
+		              </div>
+		            </div>
+		    
+		            <!-- Message body -->
+		            <div class="form-group">
+		              <label class="col-md-3 control-label" for="message">Votre message</label>
+		              <div class="col-md-9">
+		                <textarea class="form-control" id="message" name="message" placeholder="Entrez votre message ici ..." rows="5"></textarea>
+		              </div>
+		            </div>
+		    
+		            <!-- Form actions -->
+		            <div class="form-group">
+		              <div class="col-md-12 text-right">
+		                <button class="btn btn-outline-primary btn-lg" type="button" data-toggle="modal" data-target="#exampleModal">Envoyer <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+
+						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-cogs fa-2x" aria-hidden="true"></i></h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</button>
+										</div>
+										<div class="modal-body" style="text-align: left;">
+										Cette fonctionnalité sera activée une fois le site mis en ligne
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+		              </div>
+		            </div>
+		          </fieldset>
+		          </form>
+		        </div>
+		      </div>
+			</div>
+		</div>
+		<img src="images/contact-us.png" style="width: 50%; float: right; position: absolute; left: 40%; margin-top: 150px;">
+	</div>  
+
+	
+
+
+
+
+
+
+
+
+
+
+	<!-- foooter -->
+
+	<footer class="container-fuid" style="margin: 0; float: left; background-color: skyblue; width: 100%; max-width: 100%;	height: 50px; padding-left: 10px;">
+			<p style="float: left; margin: 0; padding-top: 10px; font-size: 20px; letter-spacing: 1px; padding-left: 10px;">
+				TPE - Flotabilité 
+			</p>
+			<p style="float: right; margin: 0; padding-top: 10px; font-size: 20px; letter-spacing: 1px; padding-right: 10px;">
+				Année 2017 - 2018
+			</p>
+	</footer>
+</body>
+</html>
